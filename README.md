@@ -15,7 +15,7 @@ Drag and drop or copy the file and add it to your project.
 
 ###### ENTER YOUR SERVER URL:
 ```
-// ServerRequest.swift
+//ServerRequest.swift
 var BASE_URL = ""    
 ```
 
@@ -23,6 +23,8 @@ var BASE_URL = ""
 ###### SETUP YOUR ENUM NAMES:
 
 ```
+//ServerRequest.swift
+
 enum API_TYPES_NAME: Int {
         
         //EXAMPLE
@@ -30,6 +32,7 @@ enum API_TYPES_NAME: Int {
         case logoutAPI
         case initialPayloadAPI
  }
+ 
    ``` 
 
 ###### SETUP YOUR REQUEST TIMEOUT INTERVAL:
@@ -43,7 +46,9 @@ var TIME_OUT = 120.0
 
 ###### Inside your generateUrlRequestWithURLPartParameters function in ServerRequest.swift , add your URL strings.
 
-```        
+```  
+//ServerRequest.swift
+
 //DEPENDING ON THE CALL, ADD APPROPRIATE URL IN CASES
    
     switch apiType! {
@@ -66,15 +71,19 @@ var TIME_OUT = 120.0
     	request.httpMethod = "GET"
 
 	}
+    
 ```
 
 ### Initialize the request :
 
 ``` 
+//ViewController.swift
+
 let serverObj = ServerRequest()
 serverObj.apiType = ServerRequest.API_TYPES_NAME.loginAPI
 serverObj.delegate = self
 serverObj.generateUrlRequestWithURLPartParameters(["email":"xyz@abc.com"], postParam: nil)
+
 ```
 
 ### Conform the class to ServerRequestDelegate using an extention:
@@ -130,7 +139,7 @@ extension ViewController:ServerRequestDelegate{
 ### Differentiate between the response using the 'apiCallType' param:
 
 ```
- func requestFailedWithError(_ error: Error, apiCallType: ServerRequest.API_TYPES_NAME, response: URLResponse?) {
+func requestFailedWithError(_ error: Error, apiCallType: ServerRequest.API_TYPES_NAME, response: URLResponse?) {
       //example
       if apiCallType == ServerRequest.API_TYPES_NAME.loginAPI {
           // your parsing
@@ -138,6 +147,7 @@ extension ViewController:ServerRequestDelegate{
           // your parsing
       }
 }
+
 ```
 
 
