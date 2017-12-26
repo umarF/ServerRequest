@@ -12,7 +12,6 @@
 ###### ENTER YOUR SERVER URL:
 ```
 // ServerRequest.swift
-
 var BASE_URL = ""    
 ```
 
@@ -41,26 +40,28 @@ var TIME_OUT = 120.0
 ###### Inside your generateUrlRequestWithURLPartParameters function in ServerRequest.swift , add your URL strings.
 
 ```        
-        var urlStr: String = ""
-        //MARK: DEPENDING ON THE CALL, ADD APPROPRIATE URL IN CASES
-        switch apiType! {
+//DEPENDING ON THE CALL, ADD APPROPRIATE URL IN CASES
+   
+    switch apiType! {
             
-        case .initialPayloadAPI:
-            //replace with your URL string
-            urlStr = "/version/app?&access_token=\(ACCESS_TOKEN)&refresh_token=\(REFRESH_TOKEN)"
-            request.httpMethod = "GET"
-          case .loginAPI:
-            //replace with your URL string
-            //date param derived from urlPartParam
-            urlStr = "/login?&date=\(urlPartParam?["asOfDate"] as? String ?? "")" 
-            request.httpMethod = "POST"
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+    	case .initialPayloadAPI:
+   		//replace with your URL string
+    	urlStr = "/version/app?&access_token=\(ACCESS_TOKEN)&refresh_token=\(REFRESH_TOKEN)"
+    	request.httpMethod = "GET"
+    
+    	case .loginAPI:
+    	//replace with your URL string
+    	//date param derived from urlPartParam
+    	urlStr = "/login?&date=\(urlPartParam?["asOfDate"] as? String ?? "")" 
+    	request.httpMethod = "POST"
+    	request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             
-        case .logoutAPI:
-            //replace with your URL string
-            urlStr = "/logout?domain=self&access_token=\(ACCESS_TOKEN)&refresh_token=\(REFRESH_TOKEN)"
-            request.httpMethod = "GET"
+    	case .logoutAPI:
+    	//replace with your URL string
+    	urlStr = "/logout?domain=self&access_token=\(ACCESS_TOKEN)&refresh_token=\(REFRESH_TOKEN)"
+    	request.httpMethod = "GET"
 
+    }
 ```
 
 ### Initialize the request :
@@ -134,4 +135,5 @@ extension ViewController:ServerRequestDelegate{
       }
     }
 ```
+
 
