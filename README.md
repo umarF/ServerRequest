@@ -5,6 +5,10 @@
 
 ## How to use ?
 
+### Add ServerRequest.swift to your project
+Drag and drop or copy the file and add it to your project.
+
+
 
 ### Setup ServerRequst.swift:
 
@@ -61,7 +65,7 @@ var TIME_OUT = 120.0
     	urlStr = "/logout?domain=self&access_token=\(ACCESS_TOKEN)&refresh_token=\(REFRESH_TOKEN)"
     	request.httpMethod = "GET"
 
-    }
+	}
 ```
 
 ### Initialize the request :
@@ -133,7 +137,7 @@ extension ViewController:ServerRequestDelegate{
       }else if apiCallType == ServerRequest.API_TYPES_NAME.logoutAPI {
           // your parsing
       }
-    }
+}
 ```
 
 
