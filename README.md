@@ -70,7 +70,7 @@ var TIME_OUT = 120.0
     	urlStr = "/logout?domain=self&access_token=\(ACCESS_TOKEN)&refresh_token=\(REFRESH_TOKEN)"
     	request.httpMethod = "GET"
 
-	}
+    }
     
 ```
 
